@@ -1,19 +1,10 @@
-import LndGrpc from "lnd-grpc";
+import dotenv from "dotenv";
+import app from "./server.js";
 
-const options = {
-  host: "localhost:10009",
-  cert: "~/.lnd/tls.cert",
-  macaroon: "~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon",
-};
+dotenv.config();
 
-const grpc = new LndGrpc(options);
+const PORT = process.env.PORT || 5000;
 
-const connect = async () => {
-  await grpc.connect();
-
-  console.log(grpc.state);
-};
-
-connect();
-
-export default grpc;
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+})
