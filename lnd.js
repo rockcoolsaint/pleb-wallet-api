@@ -13,12 +13,18 @@ const grpc = new LndGrpc(options);
 
 const connect = async () => {
   await grpc.connect();
+};
 
+const getBalance = async () => {
   console.log(grpc.state);
 
   const balance  = await grpc.services.Lightning.walletBalance();
 
-  console.log(balance);
-};
+  return balance;
+}
 
-export {connect, grpc};
+export {
+  connect,
+  grpc,
+  getBalance
+};
