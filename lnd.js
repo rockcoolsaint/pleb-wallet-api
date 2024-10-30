@@ -21,7 +21,4 @@ const connect = async () => {
   console.log(balance);
 };
 
-connect();
-
-
-export default grpc;
+export {connect, grpc};
